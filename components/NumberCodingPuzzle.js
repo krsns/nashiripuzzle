@@ -10,7 +10,7 @@ const NumberCodingPuzzle = () => {
   const [celebration, setCelebration] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Handle hydration
+  // Handle hydration - FIXED
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -231,9 +231,16 @@ const NumberCodingPuzzle = () => {
     return null;
   };
 
-  // Prevent hydration mismatch
+  // Prevent hydration mismatch - SIMPLIFIED
   if (!mounted) {
-    return null;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-4 flex items-center justify-center">
+        <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
+          <h1 className="text-3xl font-bold text-purple-800">Loading...</h1>
+          <p className="text-gray-600 mt-4">Sedang memuat game untuk Nashiri...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
